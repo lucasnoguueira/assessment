@@ -22,16 +22,16 @@ def extract_movie_details(movie_link):
         title = None
         date = None
 
-        movie_data = movie_soup.find('div', attrs={'class': 'title_wrapper'})
+        movie_data = movie_soup.find('div', attrs={'class': 'sc-b5e8e7ce-1 kNhUtn'})
         if movie_data is not None:
             title = movie_data.find('h1').get_text()
-            date = movie_data.find('a', attrs={'title': 'See more release dates'}).get_text().strip()
+            date = movie_data.find('a', attrs={'class': 'ipc-link ipc-link--baseAlt ipc-link--inherit-color sc-f26752fb-1 hMnkBf'}).get_text().strip()
 
-        rating = movie_soup.find('span', attrs={'itemprop': 'ratingValue'}).get_text() if movie_soup.find(
-            'span', attrs={'itemprop': 'ratingValue'}) else None
+        rating = movie_soup.find('span', attrs={'class': 'sc-e457ee34-1 gvYTvP'}).get_text() if movie_soup.find(
+            'span', attrs={'class': 'sc-e457ee34-1 gvYTvP'}) else None
 
-        plot_text = movie_soup.find('div', attrs={'class': 'summary_text'}).get_text().strip() if movie_soup.find(
-            'div', attrs={'class': 'summary_text'}) else None
+        plot_text = movie_soup.find('span', attrs={'class': 'sc-6cc92269-2 jWocDE'}).get_text().strip() if movie_soup.find(
+            'span', attrs={'class': 'sc-6cc92269-1 dzxjtm'}) else None
 
         with open('movies.csv', mode='a') as file:
             movie_writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
